@@ -111,9 +111,6 @@ public class BottomTabLayout extends LinearLayout implements View.OnTouchListene
                     params.setMargins(0, 0, 0,  tab_item_name.getMeasuredHeight()+tab_item_bg.getPaddingBottom()+tab_item_bg.getPaddingTop()
                             );
 
-//                    tab_item_icon.setBackgroundColor(Color.GREEN);
-//                    tabView.setBackgroundColor(Color.RED);
-//                    tab_item_name.setBackgroundColor(Color.BLACK);
                     ViewGroup view = (ViewGroup) getParent();
                     if (view != null) {
                         view.setClipChildren(false);

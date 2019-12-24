@@ -10,14 +10,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.viewpager.widget.ViewPager;
 
 import com.zwl.studyviewpagerdemo.fragment.CarFragment;
-import com.zwl.studyviewpagerdemo.fragment.PostFragment;
-import com.zwl.studyviewpagerdemo.fragment.ServiceFragment;
 import com.zwl.studyviewpagerdemo.fragment.FragmentUtil;
 import com.zwl.studyviewpagerdemo.fragment.HomeFragment;
 import com.zwl.studyviewpagerdemo.fragment.MineFragment;
+import com.zwl.studyviewpagerdemo.fragment.PostFragment;
+import com.zwl.studyviewpagerdemo.fragment.ServiceFragment;
 import com.zwl.studyviewpagerdemo.tab.BottomTab;
 import com.zwl.studyviewpagerdemo.tab.BottomTabChangeListener;
 import com.zwl.studyviewpagerdemo.tab.BottomTabLayout;
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         mBottomTabLayout = findViewById(R.id.tab_layout);
         mViewPager = findViewById(R.id.view_pager);
-        mViewPager.setEnableScroll(false);
+        mViewPager.setEnableScroll(true);
         mBottomTabLayout.setUpWithViewPager(mViewPager);
         mBottomTabLayout.setOnTabChangeListener(new BottomTabChangeListener() {
             @Override

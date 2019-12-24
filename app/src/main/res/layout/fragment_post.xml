@@ -3,10 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="发布"
+    <com.zwl.studyviewpagerdemo.MyViewPager
+        android:id="@+id/post_viewpager"
         android:gravity="center"
-        android:textSize="40sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>

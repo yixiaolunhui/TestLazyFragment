@@ -4,7 +4,9 @@ import android.util.Log;
 import android.view.View;
 
 import com.zwl.studyviewpagerdemo.LazyFragment;
+import com.zwl.studyviewpagerdemo.MyViewPager;
 import com.zwl.studyviewpagerdemo.R;
+import com.zwl.studyviewpagerdemo.fragment.post.PostChildPagerAdapter;
 
 /**
  * @author zwl
@@ -12,9 +14,15 @@ import com.zwl.studyviewpagerdemo.R;
  * @date on 2019-12-23
  */
 public class PostFragment extends LazyFragment {
+    MyViewPager myViewPager;
+
+    PostChildPagerAdapter mPostChildPagerAdapter;
+
     @Override
     protected void initView(View rootView) {
-
+        myViewPager = rootView.findViewById(R.id.post_viewpager);
+        mPostChildPagerAdapter = new PostChildPagerAdapter(getChildFragmentManager());
+        myViewPager.setAdapter(mPostChildPagerAdapter);
     }
 
     @Override
@@ -25,18 +33,18 @@ public class PostFragment extends LazyFragment {
     @Override
     protected void onFragmentFirstVisible() {
         super.onFragmentFirstVisible();
-        Log.e("ViewPager","PostFragment-onFragmentFirstVisible");
+        Log.e("ViewPager", "PostFragment-onFragmentFirstVisible");
     }
 
     @Override
     protected void onFragmentVisible() {
         super.onFragmentVisible();
-        Log.e("ViewPager","PostFragment-onFragmentVisible");
+        Log.e("ViewPager", "PostFragment-onFragmentVisible");
     }
 
     @Override
     protected void onFragmentHide() {
         super.onFragmentHide();
-        Log.e("ViewPager","PostFragment-onFragmentHide");
+        Log.e("ViewPager", "PostFragment-onFragmentHide");
     }
 }
