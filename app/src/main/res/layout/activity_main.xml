@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+
+    <com.zwl.studyviewpagerdemo.MyViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tab_ll"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/tab_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:clipChildren="false"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_tab_top_shadow" />
+
+        <com.zwl.studyviewpagerdemo.tab.BottomTabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:elevation="3dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true" />
+    </LinearLayout>
+
+
+</RelativeLayout>

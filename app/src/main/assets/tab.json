@@ -1,0 +1,72 @@
+[
+  {
+    "id": 0,
+    "type": 1,
+    "isBulgeImg": false,
+    "tabName": "首页",
+    "tabNameUnSelectColor": "#B0C4DE",
+    "tabNameSelectColor": "#F7B62D",
+    "imageUnSelectedLocalRes": 0,
+    "imageSelectedLocalRes": 0,
+    "imageUnSelectedUrl": "https://www.youhuihua.com/img/android/ic_main_tab_home_unselect.png",
+    "imageSelectedUrl": "https://www.youhuihua.com/img/android/ic_main_tab_home_selected.png",
+    "startTime": "",
+    "deadLineTime": ""
+  },
+  {
+    "id": 1,
+    "type": 1,
+    "isBulgeImg": false,
+    "tabName": "汽车",
+    "tabNameUnSelectColor": "#B0C4DE",
+    "tabNameSelectColor": "#F7B62D",
+    "imageUnSelectedLocalRes": 0,
+    "imageSelectedLocalRes": 0,
+    "imageUnSelectedUrl": "https://www.youhuihua.com/img/android/ic_main_tab_amoy_car_unselect.png",
+    "imageSelectedUrl": "https://www.youhuihua.com/img/android/ic_main_tab_amoy_car_selected.png",
+    "startTime": "",
+    "deadLineTime": ""
+  },
+  {
+    "id": 2,
+    "type": 1,
+    "isBulgeImg": true,
+    "tabName": "发布",
+    "tabNameUnSelectColor": "#B0C4DE",
+    "tabNameSelectColor": "#F7B62D",
+    "imageUnSelectedLocalRes": 0,
+    "imageSelectedLocalRes": 0,
+    "imageUnSelectedUrl": "https://www.youhuihua.com/img/android/ic_tab_post.png",
+    "imageSelectedUrl": "https://www.youhuihua.com/img/android/ic_tab_post.png",
+    "startTime": "",
+    "deadLineTime": ""
+  },
+  {
+    "id": 3,
+    "type": 1,
+    "isBulgeImg": false,
+    "tabName": "服务",
+    "tabNameUnSelectColor": "#B0C4DE",
+    "tabNameSelectColor": "#F7B62D",
+    "imageUnSelectedLocalRes": 0,
+    "imageSelectedLocalRes": 0,
+    "imageUnSelectedUrl": "https://www.youhuihua.com/img/android/ic_main_tab_service_unselect.png",
+    "imageSelectedUrl": "https://www.youhuihua.com/img/android/ic_main_tab_service_selected.png",
+    "startTime": "",
+    "deadLineTime": ""
+  },
+  {
+    "id": 4,
+    "type": 1,
+    "isBulgeImg": false,
+    "tabName": "我的",
+    "tabNameUnSelectColor": "#B0C4DE",
+    "tabNameSelectColor": "#F7B62D",
+    "imageUnSelectedLocalRes": 0,
+    "imageSelectedLocalRes": 0,
+    "imageUnSelectedUrl": "https://www.youhuihua.com/img/android/ic_main_tab_mine_unselect.png",
+    "imageSelectedUrl": "https://www.youhuihua.com/img/android/ic_main_tab_mine_selected.png",
+    "startTime": "",
+    "deadLineTime": ""
+  }
+]
