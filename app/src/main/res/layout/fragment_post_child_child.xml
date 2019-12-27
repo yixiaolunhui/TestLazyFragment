@@ -4,8 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.zwl.studyviewpagerdemo.MyViewPager
-        android:id="@+id/child_vp"
+    <TextView
+        android:id="@+id/child_tv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="40sp" />
 </LinearLayout>

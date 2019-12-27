@@ -1,13 +1,14 @@
 package com.zwl.studyviewpagerdemo.fragment.post;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.zwl.studyviewpagerdemo.LazyFragment;
+import com.zwl.studyviewpagerdemo.MyViewPager;
 import com.zwl.studyviewpagerdemo.R;
 
 /**
@@ -17,7 +18,8 @@ import com.zwl.studyviewpagerdemo.R;
 public class PostChildFragment extends LazyFragment {
 
     private static final String KEY_DATA = "key_data";
-    private TextView childTV;
+    private MyViewPager myViewPager;
+    private PostChildChildPagerAdapter mPostChildChildPagerAdapter;
     private int index;
 
 
@@ -36,14 +38,33 @@ public class PostChildFragment extends LazyFragment {
 
     @Override
     protected void initView(View rootView) {
-        childTV = rootView.findViewById(R.id.child_tv);
         index = getArguments().getInt(KEY_DATA);
-        childTV.setText(getPosStr(index));
+        myViewPager = rootView.findViewById(R.id.child_vp);
+        mPostChildChildPagerAdapter = new PostChildChildPagerAdapter(getChildFragmentManager(), index);
+        myViewPager.setAdapter(mPostChildChildPagerAdapter);
+
+
+        myViewPager.setBackgroundColor(getColor(index));
     }
 
-    public String getPosStr(int position) {
-        return "发布第" + (position + 1) + "个界面";
+    private int getColor(int index) {
+        int color;
+        switch (index) {
+            case 0:
+                color = Color.GREEN;
+                break;
+            case 1:
+                color = Color.RED;
+                break;
+            case 2:
+                color = Color.GRAY;
+                break;
+            default:
+                color = Color.BLUE;
+        }
+        return color;
     }
+
 
     @Override
     protected void onFragmentFirstVisible() {
