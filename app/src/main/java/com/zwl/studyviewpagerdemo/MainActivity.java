@@ -22,6 +22,7 @@ import com.zwl.studyviewpagerdemo.tab.BottomTabChangeListener;
 import com.zwl.studyviewpagerdemo.tab.BottomTabLayout;
 import com.zwl.studyviewpagerdemo.tab.BottomTabUtil;
 import com.zwl.studyviewpagerdemo.tab.GsonUtil;
+import com.zwl.studyviewpagerdemo.viewpager.VerticalActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         mBottomTabLayout = findViewById(R.id.tab_layout);
         mViewPager = findViewById(R.id.view_pager);
         mViewPager.setEnableScroll(true);
+        mViewPager.setOffscreenPageLimit(5);
         mBottomTabLayout.setUpWithViewPager(mViewPager);
         mBottomTabLayout.setOnTabChangeListener(new BottomTabChangeListener() {
             @Override
@@ -91,6 +93,13 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mAdapter);
 
 
+
+        findViewById(R.id.douyin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, VerticalActivity.class));
+            }
+        });
     }
 
     private void initTab() {
