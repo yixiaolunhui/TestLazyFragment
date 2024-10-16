@@ -9,6 +9,9 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.zwl.studyviewpagerdemo.LazyFragment;
 import com.zwl.studyviewpagerdemo.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author zwl
  * @describe TODO
@@ -28,9 +31,8 @@ public class VerticalFragment extends LazyFragment {
     @Override
     protected void initView(View rootView) {
         mVerticalViewPager = rootView.findViewById(R.id.vertical_viewpager);
+
         mBtn = rootView.findViewById(R.id.btn_iscanleft);
-        mVerticalViewPager.setOffscreenPageLimit(5);
-        mVerticalViewPager.setAdapter(new VerticalPager());
 
         mBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +85,16 @@ public class VerticalFragment extends LazyFragment {
     protected void onFragmentVisible() {
         super.onFragmentVisible();
         Log.e("ViewPager", "VerticalFragment-onFragmentVisible");
+
+        List<String> strings = new ArrayList<>();
+        strings.add("1");
+        strings.add("2");
+        strings.add("3");
+        strings.add("4");
+
+        mVerticalViewPager.setAdapter(new VideoFragmentStateAdapter(getActivity(), strings));
+
+        mVerticalViewPager.setOffscreenPageLimit(strings.size() - 1);
     }
 
     @Override

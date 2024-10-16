@@ -105,9 +105,9 @@ public class MainActivity extends AppCompatActivity {
     private void initTab() {
 
         //模拟网络数据
-        String tabJson = BottomTabUtil.getJson(this, "tab.json");
-        List<BottomTab> bottomTabList = GsonUtil.fromJsonToList(tabJson, BottomTab[].class);
-        mBottomTabLayout.setTabData(bottomTabList);
+//        String tabJson = BottomTabUtil.getJson(this, "tab.json");
+//        List<BottomTab> bottomTabList = GsonUtil.fromJsonToList(tabJson, BottomTab[].class);
+//        mBottomTabLayout.setTabData(bottomTabList);
 
         //本地数据
         mBottomTabLayout.setTabData(BottomTabUtil.getXYLocalBottomTabs());
