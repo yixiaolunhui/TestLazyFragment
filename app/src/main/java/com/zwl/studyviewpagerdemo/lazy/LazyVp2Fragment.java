@@ -1,4 +1,4 @@
-package com.zwl.studyviewpagerdemo;
+package com.zwl.studyviewpagerdemo.lazy;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.zwl.studyviewpagerdemo.viewpager.VerticalFragment;
+
 import java.util.List;
 
 /**
@@ -20,9 +22,9 @@ import java.util.List;
  * @describe 懒加载
  * @date on 2019-12-09
  */
-public abstract class LazyFragment extends Fragment {
+public abstract class LazyVp2Fragment extends Fragment {
 
-    private final String TAG = LazyFragment.class.getName();
+    private final String TAG = LazyVp2Fragment.class.getName();
     private View rootView;
 
     private boolean isViewCreated = false;//View是否创建
@@ -69,12 +71,6 @@ public abstract class LazyFragment extends Fragment {
         //初始化view
         initView(rootView);
         isViewCreated = true;
-
-
-        if (!isHidden() && getUserVisibleHint()) {
-            dispatchUserVisibleHint(true);
-        }
-
         return rootView;
     }
 
@@ -131,6 +127,9 @@ public abstract class LazyFragment extends Fragment {
         List<Fragment> fragments = fragmentManager.getFragments();
         if (fragments != null) {
             for (Fragment fragment : fragments) {
+                if (fragment instanceof LazyVp2Fragment) {
+                    ((LazyVp2Fragment) fragment).dispatchUserVisibleHint(isVisible);
+                }
                 if (fragment instanceof LazyFragment &&
                         !fragment.isHidden() &&
                         fragment.getUserVisibleHint()) {
@@ -170,6 +169,9 @@ public abstract class LazyFragment extends Fragment {
      */
     private boolean isParentInvisible() {
         Fragment parentFragment = getParentFragment();
+        if (parentFragment != null && parentFragment instanceof LazyVp2Fragment) {
+            return !((LazyVp2Fragment) parentFragment).currentVisibleState();
+        }
         if (parentFragment != null && parentFragment instanceof LazyFragment) {
             return !((LazyFragment) parentFragment).currentVisibleState();
         }
@@ -181,7 +183,7 @@ public abstract class LazyFragment extends Fragment {
      *
      * @return true  显示   false  隐藏
      */
-    private boolean currentVisibleState() {
+    public boolean currentVisibleState() {
         return currentVisibleState;
     }
 
@@ -211,22 +213,8 @@ public abstract class LazyFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         LOG("setUserVisibleHint   isVisibleToUser=" + isVisibleToUser);
-
-        //对于情况1）不予处理，用 isViewCreated 进行判断，如果isViewCreated false，说明它没有被创建
         if (isViewCreated) {
-
-            //对于情况2）要分情况考虑，如果是不可见->可见是下面的情况 2.1），如果是可见->不可见是下面的情况2.2），只有当可见状态进行改变的时候才需要切换，否则会出现反复调用的情况从而导致事件分发带来的多次更新
-
-            //2.1）不可见（currentVisibleState=false）->可见（isVisibleToUser=true）
-            if (isVisibleToUser && !currentVisibleState) {//2.1
-                dispatchUserVisibleHint(true);
-            }
-
-            //2.2）可见（currentVisibleState=true）->不可见（isVisibleToUser=false）
-            else if (!isVisibleToUser && currentVisibleState) {//2.2
-                dispatchUserVisibleHint(false);
-            }
-
+            dispatchUserVisibleHint(isVisibleToUser);
         }
     }
 
@@ -257,7 +245,7 @@ public abstract class LazyFragment extends Fragment {
             //由于Activit1 中如果有多个fragment，然后从Activity1 跳转到Activity2，此时会有多个fragment会在activity1缓存，此时，如果再从activity2跳转回
             //activity1，这个时候会将所有的缓存的fragment进行onResume生命周期的重复，这个时候我们无需对所有缓存的fragnment 调用dispatchUserVisibleHint(true)
             //我们只需要对可见的fragment进行加载，因此就有下面的if
-            if (!isHidden() && !currentVisibleState && getUserVisibleHint()) {
+            if (!isHidden() && !currentVisibleState) {
                 dispatchUserVisibleHint(true);
             }
         }
@@ -273,7 +261,7 @@ public abstract class LazyFragment extends Fragment {
     public void onPause() {
         super.onPause();
         LOG("onPause");
-        if (currentVisibleState && getUserVisibleHint()) {
+        if (currentVisibleState) {
             dispatchUserVisibleHint(false);
         }
     }

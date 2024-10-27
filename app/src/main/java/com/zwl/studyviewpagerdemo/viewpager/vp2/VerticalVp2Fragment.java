@@ -1,13 +1,14 @@
-package com.zwl.studyviewpagerdemo.viewpager;
+package com.zwl.studyviewpagerdemo.viewpager.vp2;
 
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.zwl.studyviewpagerdemo.R;
 import com.zwl.studyviewpagerdemo.lazy.LazyFragment;
+import com.zwl.studyviewpagerdemo.lazy.LazyVp2Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,16 +18,16 @@ import java.util.List;
  * @describe TODO
  * @date on 2019-12-31
  */
-public class VerticalFragment extends LazyFragment {
+public class VerticalVp2Fragment extends LazyVp2Fragment {
 
-    private VerticalViewPager mVerticalViewPager;
+    private ViewPager2 mVerticalViewPager;
     private Button mBtn;
     private boolean isCanLeft = true;//默认可以
-    private VideoFragmentPageAdapter videoFragmentStateAdapter;
+    private VerticalVp2PageAdapter videoFragmentStateAdapter;
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.fragment_vertical;
+        return R.layout.fragment_vertical_vp2;
     }
 
     @Override
@@ -47,7 +48,7 @@ public class VerticalFragment extends LazyFragment {
         strings.add("2");
         strings.add("3");
         strings.add("4");
-        videoFragmentStateAdapter = new VideoFragmentPageAdapter(getChildFragmentManager(), strings);
+        videoFragmentStateAdapter = new VerticalVp2PageAdapter(getChildFragmentManager(), getLifecycle(), strings);
         mVerticalViewPager.setAdapter(videoFragmentStateAdapter);
     }
 
@@ -62,18 +63,18 @@ public class VerticalFragment extends LazyFragment {
     @Override
     protected void onFragmentFirstVisible() {
         super.onFragmentFirstVisible();
-        Log.e("ViewPager", "VerticalFragment-onFragmentFirstVisible");
+        Log.e("ViewPager", "VerticalVp2Fragment-onFragmentFirstVisible");
     }
 
     @Override
     protected void onFragmentVisible() {
         super.onFragmentVisible();
-        Log.e("ViewPager", "VerticalFragment-onFragmentVisible");
+        Log.e("ViewPager", "VerticalVp2Fragment-onFragmentVisible");
     }
 
     @Override
     protected void onFragmentHide() {
         super.onFragmentHide();
-        Log.e("ViewPager", "VerticalFragment-onFragmentHide");
+        Log.e("ViewPager", "VerticalVp2Fragment-onFragmentHide");
     }
 }

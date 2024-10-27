@@ -7,7 +7,7 @@ import android.view.View;
 
 import androidx.fragment.app.Fragment;
 
-import com.zwl.studyviewpagerdemo.LazyFragment;
+import com.zwl.studyviewpagerdemo.lazy.LazyFragment;
 import com.zwl.studyviewpagerdemo.MyViewPager;
 import com.zwl.studyviewpagerdemo.R;
 

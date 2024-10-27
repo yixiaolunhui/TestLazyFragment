@@ -8,14 +8,15 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.zwl.studyviewpagerdemo.R;
-import com.zwl.studyviewpagerdemo.x.LazyLoadFragment;
+import com.zwl.studyviewpagerdemo.lazy.LazyFragment;
+
 
 /**
  * @author zwl
  * @describe TODO
  * @date on 2020-01-05
  */
-public class VerticalChildFragment extends LazyLoadFragment {
+public class VerticalChildFragment extends LazyFragment {
 
 
     private static final String KEY_VIDEO_INDEX = "KEY_VIDEO_INDEX";
@@ -37,10 +38,6 @@ public class VerticalChildFragment extends LazyLoadFragment {
         return R.layout.vertical_child_fragment;
     }
 
-    @Override
-    protected void initData() {
-        Log.e("ViewPager", mVideoIndex+"---VerticalChildFragment-initData");
-    }
 
     @Override
     protected void initView(View rootView) {
@@ -50,12 +47,20 @@ public class VerticalChildFragment extends LazyLoadFragment {
     }
 
     @Override
-    protected void loadData() {
-        Log.e("ViewPager", mVideoIndex+"---VerticalChildFragment-loadData");
+    protected void onFragmentFirstVisible() {
+        super.onFragmentFirstVisible();
+        Log.e("ViewPager", "index=" + mVideoIndex + "  VerticalChildFragment-onFragmentFirstVisible");
     }
 
     @Override
-    protected boolean isNeedReload() {
-        return true;
+    protected void onFragmentVisible() {
+        super.onFragmentVisible();
+        Log.e("ViewPager", "index=" + mVideoIndex + "  VerticalChildFragment-onFragmentVisible");
+    }
+
+    @Override
+    protected void onFragmentHide() {
+        super.onFragmentHide();
+        Log.e("ViewPager", "index=" + mVideoIndex + "  VerticalChildFragment-onFragmentHide");
     }
 }

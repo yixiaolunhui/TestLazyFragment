@@ -3,7 +3,7 @@ package com.zwl.studyviewpagerdemo.fragment;
 import android.util.Log;
 import android.view.View;
 
-import com.zwl.studyviewpagerdemo.LazyFragment;
+import com.zwl.studyviewpagerdemo.lazy.LazyFragment;
 import com.zwl.studyviewpagerdemo.MyViewPager;
 import com.zwl.studyviewpagerdemo.R;
 import com.zwl.studyviewpagerdemo.fragment.post.PostChildPagerAdapter;

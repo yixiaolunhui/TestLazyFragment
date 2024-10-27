@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.zwl.studyviewpagerdemo.LazyFragment;
+import com.zwl.studyviewpagerdemo.lazy.LazyFragment;
 import com.zwl.studyviewpagerdemo.R;
 
 /**

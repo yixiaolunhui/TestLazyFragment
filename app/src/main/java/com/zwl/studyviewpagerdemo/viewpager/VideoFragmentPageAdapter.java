@@ -3,7 +3,8 @@ package com.zwl.studyviewpagerdemo.viewpager;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.List;
 
@@ -12,23 +13,24 @@ import java.util.List;
  * @describe 视频
  * @date on 2020-01-04
  */
-public class VideoFragmentStateAdapter extends FragmentStateAdapter {
+public class VideoFragmentPageAdapter extends FragmentPagerAdapter {
 
     private List<String> videoInfoList;
 
-    public VideoFragmentStateAdapter(@NonNull FragmentActivity fragmentActivity, List<String> data) {
-        super(fragmentActivity);
+
+    public VideoFragmentPageAdapter(FragmentManager childFragmentManager, List<String> data) {
+        super(childFragmentManager);
         this.videoInfoList = data;
     }
 
     @NonNull
     @Override
-    public Fragment createFragment(int position) {
+    public Fragment getItem(int position) {
         return VerticalChildFragment.newInstance(position);
     }
 
     @Override
-    public int getItemCount() {
+    public int getCount() {
         return videoInfoList == null ? 0 : videoInfoList.size();
     }
 }
