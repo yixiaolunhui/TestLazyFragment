@@ -1,10 +1,9 @@
 package com.zwl.studyviewpagerdemo.viewpager;
 
+import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
-import androidx.viewpager.widget.ViewPager;
 
 import com.zwl.studyviewpagerdemo.R;
 import com.zwl.studyviewpagerdemo.lazy.LazyFragment;
@@ -38,6 +37,14 @@ public class VerticalFragment extends LazyFragment {
             public void onClick(View v) {
                 isCanLeft = !isCanLeft;
                 setBtnTv();
+                Activity act = getActivity();
+                if (act instanceof VerticalActivity) {
+                    if(isCanLeft){
+                        ((VerticalActivity) act).setSwipeDirection(DirectionalViewPager.SWIPE_BOTH);
+                    }else{
+                        ((VerticalActivity) act).setSwipeDirection(DirectionalViewPager.SWIPE_LEFT);
+                    }
+                }
             }
         });
         setBtnTv();
@@ -53,10 +60,6 @@ public class VerticalFragment extends LazyFragment {
 
     public void setBtnTv() {
         if (mBtn != null) mBtn.setText("是否可以左滑:" + isCanLeft);
-    }
-
-    public boolean isCanSeeMine() {
-        return isCanLeft;
     }
 
     @Override
