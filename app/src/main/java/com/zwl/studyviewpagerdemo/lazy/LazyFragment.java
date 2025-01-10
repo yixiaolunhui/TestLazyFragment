@@ -136,9 +136,6 @@ public abstract class LazyFragment extends Fragment {
                         fragment.getUserVisibleHint()) {
                     ((LazyFragment) fragment).dispatchUserVisibleHint(isVisible);
                 }
-                if (fragment instanceof LazyVp2Fragment) {
-                    ((LazyVp2Fragment) fragment).dispatchUserVisibleHint(isVisible);
-                }
             }
         }
     }
@@ -175,9 +172,6 @@ public abstract class LazyFragment extends Fragment {
         Fragment parentFragment = getParentFragment();
         if (parentFragment != null && parentFragment instanceof LazyFragment) {
             return !((LazyFragment) parentFragment).currentVisibleState();
-        }
-        if (parentFragment != null && parentFragment instanceof LazyVp2Fragment) {
-            return !((LazyVp2Fragment) parentFragment).currentVisibleState();
         }
         return false;
     }
